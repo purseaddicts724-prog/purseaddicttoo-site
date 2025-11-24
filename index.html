@@ -38,5 +38,306 @@
       text-align:center;
       padding:10px 12px;
       font-weight:800;
-      lett
+      letter-spacing:.6px;
+      font-size:14px;
+      position:sticky;
+      top:0;
+      z-index:10;
+      box-shadow:0 4px 16px rgba(162,65,116,.35);
+    }
+
+    /* Hero Banner */
+    .hero{
+      width:100%;
+      max-height:320px;
+      overflow:hidden;
+      position:relative;
+      background:#f9e3ee;
+    }
+    .hero img{
+      width:100%;
+      height:auto;
+      display:block;
+      object-fit:cover;
+    }
+    .hero .fade{
+      position:absolute; inset:auto 0 0 0; height:80px;
+      background:linear-gradient(180deg, transparent, rgba(248,233,242,1));
+      pointer-events:none;
+    }
+
+    header{
+      text-align:center;
+      padding:20px 12px 10px;
+      position:relative;
+    }
+    header h1{
+      margin:10px 0 6px;
+      font-size:48px;
+      font-weight:900;
+      color:var(--accent);
+      text-shadow:
+        0 2px 0 #fff,
+        0 10px 24px rgba(162,65,116,.35),
+        0 0 18px rgba(255,180,220,.65);
+    }
+    header .tagline{
+      color:var(--muted);
+      font-size:16px;
+      font-weight:600;
+      letter-spacing:.2px;
+    }
+
+    .wrap{
+      width:min(1000px, 92vw);
+      margin:0 auto 60px;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+      padding-top:8px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      padding:22px;
+      position:relative;
+      border:1px solid rgba(255,255,255,.6);
+      overflow:hidden;
+    }
+
+    .card h2{
+      text-align:center;
+      margin:0 0 12px;
+      font-size:22px;
+      font-weight:900;
+    }
+
+    .center{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      background:linear-gradient(180deg, var(--accent), var(--accent-dark));
+      color:#fff;
+      padding:14px 24px;
+      border-radius:999px;
+      font-weight:800;
+      text-decoration:none;
+      box-shadow:0 10px 18px rgba(162,65,116,.30);
+      transition:.15s ease;
+      cursor:pointer;
+      font-size:16px;
+      min-width:240px;
+    }
+    .btn:hover{transform:translateY(-1px); filter:saturate(1.05);}
+    .btn.gold{
+      background:linear-gradient(180deg, #ffd77a, var(--gold));
+      color:#2b1d0a;
+      box-shadow:0 10px 18px rgba(246,196,83,.45);
+    }
+
+    .small-note{
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+      margin-top:8px;
+      font-weight:600;
+    }
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      padding:22px 10px 40px;
+    }
+
+    /* Modal */
+    .modal-backdrop{
+      position:fixed; inset:0;
+      background:rgba(20,10,16,.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      z-index:999;
+      backdrop-filter: blur(3px);
+    }
+    .modal{
+      width:min(560px, 96vw);
+      background:#fff;
+      border-radius:20px;
+      box-shadow:0 18px 50px rgba(0,0,0,.35);
+      padding:20px;
+    }
+    .modal h3{
+      margin:4px 0 10px;
+      font-size:20px;
+      text-align:center;
+      font-weight:900;
+      color:var(--accent);
+    }
+    .close-x{
+      position:absolute; top:10px; right:12px;
+      font-size:22px; cursor:pointer;
+      background:none; border:none;
+    }
+
+    .pill-list{
+      display:flex; flex-direction:column;
+      gap:12px;
+      margin-top:10px;
+    }
+    .pill{
+      background:var(--pill);
+      padding:14px 16px;
+      border-radius:999px;
+      color:#fff;
+      text-align:center;
+      font-weight:800;
+      box-shadow:0 8px 16px rgba(0,0,0,.12);
+      text-decoration:none;
+    }
+  </style>
+</head>
+
+<body>
+
+<script>
+  const CONFIG = {
+    announcementText: "⭐ THIS WEEK ONLY: FREE SHIPPING ON ALL ORDERS! ⭐",
+    brandName: "Purse Addict Too 💖✨",
+    tagline: "Luxury-Inspired Bags • Bougie Vibes • Treat Yourself",
+
+    heroImageUrl: "purseaddicttoo-banner.png",
+
+    liveShowUrl: "https://www.facebook.com/profile.php?id=61564279056369",
+
+    payments: [
+      { label: "PayPal", detail: "paypal.me/elizabethguerra8", url: "https://paypal.me/elizabethguerra8" },
+      { label: "Venmo", detail: "@Elizabeth-Guerra-99877", url: "https://venmo.com/Elizabeth-Guerra-99877" },
+      { label: "Zelle", detail: "(972)-793-2256", url: "#" },
+      { label: "Apple Pay", detail: "(972)-793-2256", url: "#" }
+    ],
+
+    afterPaymentNote: "After payment, please screenshot and message me so I can match your order 💕",
+
+    showNewArrivals: true,
+    newArrivalsUrl: "https://www.facebook.com/profile.php?id=61564279056369",
+
+    showFooterPaymentsLink: true
+  };
+</script>
+
+<div class="top-banner" id="topBanner"></div>
+
+<div class="hero" id="heroWrap" style="display:none;">
+  <img id="heroImg" alt="Purse Addict Too banner"/>
+  <div class="fade"></div>
+</div>
+
+<header>
+  <h1 id="brandName"></h1>
+  <div class="tagline" id="tagline"></div>
+</header>
+
+<main class="wrap">
+
+  <!-- NEW ARRIVALS -->
+  <section class="card" id="newArrivalsCard" style="display:none;">
+    <h2>👜 New Arrivals</h2>
+    <div class="center">
+      <a class="btn" id="newArrivalsBtn" target="_blank">See What’s New</a>
+    </div>
+  </section>
+
+  <!-- SHOP LIVE -->
+  <section class="card">
+    <h2>✨ Shop Live</h2>
+    <div class="center">
+      <a class="btn" id="liveBtn" target="_blank">🎥 Join the Live Show</a>
+      <button class="btn gold" id="payBtn">💳 How to Pay</button>
+    </div>
+    <div class="small-note">Payments are quick & easy — tap “How to Pay” anytime 💕</div>
+  </section>
+
+</main>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <button class="close-x" id="closeModal">×</button>
+    <h3>💳 Payment Options</h3>
+    <div class="pill-list" id="paymentsList"></div>
+    <div class="small-note" id="afterPaymentNote"></div>
+  </div>
+</div>
+
+<footer>
+  © <span id="footerBrand"></span>
+  <span id="footerPay" style="display:none;">
+    • <a href="#" id="footerPayLink">Payment Methods</a>
+  </span>
+</footer>
+
+<script>
+  document.getElementById("topBanner").textContent = CONFIG.announcementText;
+  document.getElementById("brandName").textContent = CONFIG.brandName;
+  document.getElementById("tagline").textContent = CONFIG.tagline;
+  document.getElementById("footerBrand").textContent = CONFIG.brandName.replace("💖✨","").trim();
+
+  if(CONFIG.heroImageUrl){
+    document.getElementById("heroImg").src = CONFIG.heroImageUrl;
+    document.getElementById("heroWrap").style.display="block";
+  }
+
+  document.getElementById("liveBtn").href = CONFIG.liveShowUrl;
+
+  if(CONFIG.showNewArrivals){
+    document.getElementById("newArrivalsCard").style.display="block";
+    document.getElementById("newArrivalsBtn").href = CONFIG.newArrivalsUrl;
+  }
+
+  const modalBackdrop = document.getElementById("modalBackdrop");
+  const payBtn = document.getElementById("payBtn");
+  const closeModal = document.getElementById("closeModal");
+
+  payBtn.onclick = () => modalBackdrop.style.display="flex";
+  closeModal.onclick = () => modalBackdrop.style.display="none";
+  modalBackdrop.onclick = (e)=>{ if(e.target===modalBackdrop) modalBackdrop.style.display="none"; };
+
+  const paymentsList = document.getElementById("paymentsList");
+  CONFIG.payments.forEach(p=>{
+    const a = document.createElement("a");
+    a.className="pill";
+    a.href=p.url;
+    a.target="_blank";
+    a.textContent=`${p.label}: ${p.detail}`;
+    paymentsList.appendChild(a);
+  });
+
+  document.getElementById("afterPaymentNote").textContent=CONFIG.afterPaymentNote;
+
+  if(CONFIG.showFooterPaymentsLink){
+    const fp = document.getElementById("footerPay");
+    fp.style.display="inline";
+    document.getElementById("footerPayLink").onclick=(e)=>{
+      e.preventDefault();
+      modalBackdrop.style.display="flex";
+    };
+  }
+</script>
+
+</body>
+</html>
+
 
