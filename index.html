@@ -7,8 +7,8 @@
 
   <style>
     :root{
-      --bg1:#f3cfe2;  /* deeper pink */
-      --bg2:#f7ddea;
+      --bg1:#f8e0f0;
+      --bg2:#f3e6ff;
       --card:#ffffff;
       --accent:#a24174;
       --accent-dark:#7e2e59;
@@ -18,7 +18,6 @@
       --shadow:0 12px 30px rgba(50,20,40,.14);
       --pill:#241c22;
     }
-
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -26,14 +25,13 @@
       color:var(--text);
       background:
         radial-gradient(1200px 600px at -10% -20%, #ffffff 0%, transparent 60%),
-        radial-gradient(1200px 600px at 110% 0%, #ffe9f3 0%, transparent 55%),
+        radial-gradient(1200px 600px at 110% 0%, #ffe0f3 0%, transparent 55%),
         linear-gradient(180deg, var(--bg1), var(--bg2));
       min-height:100vh;
     }
 
-    /* Announcement Bar */
     .top-banner{
-      background: linear-gradient(90deg, var(--accent), #b24a86, var(--accent));
+      background: linear-gradient(90deg, #8e255f, #b24a86, #8e255f);
       color:#fff;
       text-align:center;
       padding:10px 12px;
@@ -46,12 +44,13 @@
       box-shadow:0 4px 16px rgba(162,65,116,.35);
     }
 
-    /* Hero Banner */
+    /* FB-matching hero banner */
     .hero{
       width:100%;
       max-height:320px;
       overflow:hidden;
       position:relative;
+      border-bottom:1px solid rgba(0,0,0,.04);
       background:#f9e3ee;
     }
     .hero img{
@@ -59,6 +58,7 @@
       height:auto;
       display:block;
       object-fit:cover;
+      object-position:center;
     }
     .hero .fade{
       position:absolute; inset:auto 0 0 0; height:80px;
@@ -71,15 +71,23 @@
       padding:20px 12px 10px;
       position:relative;
     }
+    header .halo{
+      position:absolute;
+      inset:-40px 0 auto 0;
+      height:180px;
+      background:
+        radial-gradient(50% 70% at 50% 0%, rgba(246,196,83,.35) 0%, transparent 60%),
+        radial-gradient(50% 70% at 30% 10%, rgba(162,65,116,.18) 0%, transparent 60%),
+        radial-gradient(50% 70% at 70% 10%, rgba(86,140,255,.16) 0%, transparent 60%);
+      pointer-events:none;
+      filter: blur(6px);
+    }
     header h1{
       margin:10px 0 6px;
-      font-size:48px;
+      font-size:46px;
       font-weight:900;
       color:var(--accent);
-      text-shadow:
-        0 2px 0 #fff,
-        0 10px 24px rgba(162,65,116,.35),
-        0 0 18px rgba(255,180,220,.65);
+      text-shadow:0 2px 0 #fff, 0 10px 24px rgba(162,65,116,.25);
     }
     header .tagline{
       color:var(--muted);
@@ -103,15 +111,24 @@
       box-shadow:var(--shadow);
       padding:22px;
       position:relative;
-      border:1px solid rgba(255,255,255,.6);
       overflow:hidden;
+      border:1px solid rgba(255,255,255,.6);
     }
-
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-40% -20% auto auto;
+      width:260px;height:260px;
+      background: radial-gradient(circle at center, rgba(246,196,83,.35), transparent 60%);
+      transform:rotate(18deg);
+      pointer-events:none;
+    }
     .card h2{
       text-align:center;
       margin:0 0 12px;
       font-size:22px;
       font-weight:900;
+      letter-spacing:.3px;
     }
 
     .center{
@@ -135,15 +152,24 @@
       text-decoration:none;
       box-shadow:0 10px 18px rgba(162,65,116,.30);
       transition:.15s ease;
+      border:0;
       cursor:pointer;
       font-size:16px;
       min-width:240px;
+      position:relative;
     }
     .btn:hover{transform:translateY(-1px); filter:saturate(1.05);}
     .btn.gold{
       background:linear-gradient(180deg, #ffd77a, var(--gold));
       color:#2b1d0a;
       box-shadow:0 10px 18px rgba(246,196,83,.45);
+    }
+
+    .subtle-link{
+      color:var(--accent-dark);
+      font-weight:800;
+      text-decoration:none;
+      border-bottom:2px dotted rgba(126,46,89,.5);
     }
 
     .small-note{
@@ -154,6 +180,19 @@
       font-weight:600;
     }
 
+    /* Black Friday card */
+    .sale-card{
+      padding:0;
+      overflow:hidden;
+    }
+    .sale-card:before{display:none;}
+    .sale-img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:20px;
+    }
+
     footer{
       text-align:center;
       color:var(--muted);
@@ -161,7 +200,7 @@
       padding:22px 10px 40px;
     }
 
-    /* Modal */
+    /* modal */
     .modal-backdrop{
       position:fixed; inset:0;
       background:rgba(20,10,16,.55);
@@ -178,6 +217,8 @@
       border-radius:20px;
       box-shadow:0 18px 50px rgba(0,0,0,.35);
       padding:20px;
+      position:relative;
+      border:2px solid rgba(246,196,83,.45);
     }
     .modal h3{
       margin:4px 0 10px;
@@ -188,156 +229,213 @@
     }
     .close-x{
       position:absolute; top:10px; right:12px;
+      border:0; background:#fff;
       font-size:22px; cursor:pointer;
-      background:none; border:none;
+      font-weight:900; color:#333;
     }
 
     .pill-list{
       display:flex; flex-direction:column;
-      gap:12px;
-      margin-top:10px;
+      gap:12px; margin-top:8px;
     }
     .pill{
       background:var(--pill);
+      color:#fff;
       padding:14px 16px;
       border-radius:999px;
-      color:#fff;
-      text-align:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       font-weight:800;
-      box-shadow:0 8px 16px rgba(0,0,0,.12);
       text-decoration:none;
+      transition:.12s ease;
+      box-shadow:0 8px 16px rgba(0,0,0,.12);
+      text-align:center;
+    }
+    .pill:hover{transform:translateY(-1px);}
+
+    @media (max-width:720px){
+      header h1{font-size:34px;}
+      .btn{min-width:200px;}
+      .hero{max-height:220px;}
     }
   </style>
 </head>
 
 <body>
 
-<script>
-  const CONFIG = {
-    announcementText: "⭐ Join us Friday for our Black Friday Sale! ⭐",
-    brandName: "Purse Addict Too 💖✨",
-    tagline: "Luxury-Inspired Bags • Bougie Vibes • Treat Yourself",
+  <!-- =========================
+       ✅ EDIT ME SECTION (CONFIG) ✅
+       Change text/links HERE only
+  ========================== -->
+  <script>
+    const CONFIG = {
+      announcementText: "⭐ THIS WEEK ONLY: FREE SHIPPING ON ALL ORDERS! ⭐",
+      brandName: "Purse Addict Too 💕",
+      tagline: "Luxury-Inspired Bags • Bougie Vibes • Easy Checkout",
 
-    heroImageUrl: "purseaddicttoo-banner.png",
+      // Hero banner that matches the FB page
+      heroImageUrl: "purseaddicttoo-banner.png",
 
-    liveShowUrl: "https://www.facebook.com/profile.php?id=61564279056369",
+      // PUBLIC Facebook page for lives:
+      liveShowUrl: "https://www.facebook.com/profile.php?id=61564279056369",
 
-    payments: [
-      { label: "PayPal", detail: "paypal.me/elizabethguerra8", url: "https://paypal.me/elizabethguerra8" },
-      { label: "Venmo", detail: "@Elizabeth-Guerra-99877", url: "https://venmo.com/Elizabeth-Guerra-99877" },
-      { label: "Zelle", detail: "(972)-793-2256", url: "#" },
-      { label: "Apple Pay", detail: "(972)-793-2256", url: "#" }
-    ],
+      // Black Friday (or any promo) graphic.
+      // 👉 Rename your image to this OR change the filename below.
+      blackFridayImageUrl: "black-friday-banner.png",
 
-    afterPaymentNote: "After payment, please screenshot and message me so I can match your order 💕",
+      payments: [
+        { label: "PayPal", detail: "paypal.me/elizabethguerra8", url: "https://paypal.me/elizabethguerra8" },
+        { label: "Venmo", detail: "@Elizabeth-Guerra-99877", url: "https://venmo.com/Elizabeth-Guerra-99877" },
+        { label: "Zelle",  detail: "(972)-793-2256",            url: "#" },
+        { label: "Apple Pay", detail: "(972)-793-2256",         url: "#" }
+      ],
+      afterPaymentNote: "After payment, please screenshot and message me so I can match your order 💕",
 
-    showNewArrivals: true,
-    newArrivalsUrl: "https://www.facebook.com/photo/?fbid=122174678294475968&set=a.122168961806475968",
+      // Contact / order section
+      contactButtonLabel: "Email Us Your Order",
+      contactUrl: "mailto:elizabeth@purseaddicttoo.com",
+      contactNote: "Ready to claim a bag or have questions? Tap the button to email your screenshot & shipping info 💌",
 
-    showFooterPaymentsLink: true
-  };
-</script>
-
-<div class="top-banner" id="topBanner"></div>
-
-<div class="hero" id="heroWrap" style="display:none;">
-  <img id="heroImg" alt="Purse Addict Too banner"/>
-  <div class="fade"></div>
-</div>
-
-<header>
-  <h1 id="brandName"></h1>
-  <div class="tagline" id="tagline"></div>
-</header>
-
-<main class="wrap">
-
-  <!-- NEW ARRIVALS -->
-  <section class="card" id="newArrivalsCard" style="display:none;">
-    <h2>👜 New Arrivals</h2>
-    <div class="center">
-      <a class="btn" id="newArrivalsBtn" target="_blank">See What’s New</a>
-    </div>
-  </section>
-
-  <!-- SHOP LIVE -->
-  <section class="card">
-    <h2>✨ Shop Live</h2>
-    <div class="center">
-      <a class="btn" id="liveBtn" target="_blank">🎥 Join the Live Show</a>
-      <button class="btn gold" id="payBtn">💳 How to Pay</button>
-    </div>
-    <div class="small-note">Payments are quick & easy — tap “How to Pay” anytime 💕</div>
-  </section>
-
-</main>
-
-<!-- Modal -->
-<div class="modal-backdrop" id="modalBackdrop">
-  <div class="modal">
-    <button class="close-x" id="closeModal">×</button>
-    <h3>💳 Payment Options</h3>
-    <div class="pill-list" id="paymentsList"></div>
-    <div class="small-note" id="afterPaymentNote"></div>
-  </div>
-</div>
-
-<footer>
-  © <span id="footerBrand"></span>
-  <span id="footerPay" style="display:none;">
-    • <a href="#" id="footerPayLink">Payment Methods</a>
-  </span>
-</footer>
-
-<script>
-  document.getElementById("topBanner").textContent = CONFIG.announcementText;
-  document.getElementById("brandName").textContent = CONFIG.brandName;
-  document.getElementById("tagline").textContent = CONFIG.tagline;
-  document.getElementById("footerBrand").textContent = CONFIG.brandName.replace("💖✨","").trim();
-
-  if(CONFIG.heroImageUrl){
-    document.getElementById("heroImg").src = CONFIG.heroImageUrl;
-    document.getElementById("heroWrap").style.display="block";
-  }
-
-  document.getElementById("liveBtn").href = CONFIG.liveShowUrl;
-
-  if(CONFIG.showNewArrivals){
-    document.getElementById("newArrivalsCard").style.display="block";
-    document.getElementById("newArrivalsBtn").href = CONFIG.newArrivalsUrl;
-  }
-
-  const modalBackdrop = document.getElementById("modalBackdrop");
-  const payBtn = document.getElementById("payBtn");
-  const closeModal = document.getElementById("closeModal");
-
-  payBtn.onclick = () => modalBackdrop.style.display="flex";
-  closeModal.onclick = () => modalBackdrop.style.display="none";
-  modalBackdrop.onclick = (e)=>{ if(e.target===modalBackdrop) modalBackdrop.style.display="none"; };
-
-  const paymentsList = document.getElementById("paymentsList");
-  CONFIG.payments.forEach(p=>{
-    const a = document.createElement("a");
-    a.className="pill";
-    a.href=p.url;
-    a.target="_blank";
-    a.textContent=`${p.label}: ${p.detail}`;
-    paymentsList.appendChild(a);
-  });
-
-  document.getElementById("afterPaymentNote").textContent=CONFIG.afterPaymentNote;
-
-  if(CONFIG.showFooterPaymentsLink){
-    const fp = document.getElementById("footerPay");
-    fp.style.display="inline";
-    document.getElementById("footerPayLink").onclick=(e)=>{
-      e.preventDefault();
-      modalBackdrop.style.display="flex";
+      showFooterPaymentsLink: true
     };
-  }
-</script>
+
+  </script>
+  <!-- ========================= -->
+
+
+  <div class="top-banner" id="topBanner"></div>
+
+  <div class="hero" id="heroWrap" style="display:none;">
+    <img id="heroImg" alt="Purse Addict Too banner"/>
+    <div class="fade"></div>
+  </div>
+
+  <header>
+    <div class="halo"></div>
+    <h1 id="brandName"></h1>
+    <div class="tagline" id="tagline"></div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- Black Friday / Promo graphic -->
+    <section class="card sale-card" id="saleCard" style="display:none;">
+      <img id="saleImg" class="sale-img" alt="Black Friday Sale">
+    </section>
+
+    <!-- SHOP LIVE -->
+    <section class="card">
+      <h2>✨ Shop Live</h2>
+      <div class="center">
+        <a class="btn" id="liveBtn" target="_blank" rel="noopener">🎥 Join the Live Show</a>
+        <button class="btn gold" id="payBtn">💳 How to Pay</button>
+      </div>
+      <div class="small-note">Payments are quick & easy — tap “How to Pay” anytime 💕</div>
+    </section>
+
+    <!-- CONTACT / PLACE AN ORDER -->
+    <section class="card">
+      <h2>📩 Contact / Place an Order</h2>
+      <div class="center">
+        <a class="btn" id="contactBtn" target="_blank" rel="noopener">Message Us</a>
+      </div>
+      <div class="small-note" id="contactNote"></div>
+    </section>
+
+  </main>
+
+  <!-- PAYMENT MODAL -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="paymentsTitle">
+      <button class="close-x" id="closeModal" aria-label="Close">×</button>
+      <h3 id="paymentsTitle">💳 Payment Options</h3>
+      <div class="pill-list" id="paymentsList"></div>
+      <div class="small-note" id="afterPaymentNote"></div>
+    </div>
+  </div>
+
+  <footer>
+    <span>© <span id="footerBrand"></span></span>
+    <span id="footerPay" style="display:none;">
+      • <a href="#" class="subtle-link" id="footerPayLink">Payment Methods</a>
+    </span>
+  </footer>
+
+  <script>
+    // Top text / brand
+    document.getElementById("topBanner").textContent = CONFIG.announcementText;
+    document.getElementById("brandName").textContent = CONFIG.brandName;
+    document.getElementById("footerBrand").textContent = CONFIG.brandName.replace("💕","").trim();
+    document.getElementById("tagline").textContent = CONFIG.tagline;
+
+    // Hero
+    if(CONFIG.heroImageUrl){
+      const heroWrap = document.getElementById("heroWrap");
+      const heroImg  = document.getElementById("heroImg");
+      heroImg.src = CONFIG.heroImageUrl;
+      heroWrap.style.display = "block";
+    }
+
+    // Black Friday / promo graphic
+    if(CONFIG.blackFridayImageUrl){
+      const saleCard = document.getElementById("saleCard");
+      const saleImg  = document.getElementById("saleImg");
+      saleImg.src = CONFIG.blackFridayImageUrl;
+      saleCard.style.display = "block";
+    }
+
+    // Shop Live button
+    document.getElementById("liveBtn").href = CONFIG.liveShowUrl;
+
+    // Contact / order card
+    const contactBtn  = document.getElementById("contactBtn");
+    const contactNote = document.getElementById("contactNote");
+    contactBtn.href        = CONFIG.contactUrl;
+    contactBtn.textContent = CONFIG.contactButtonLabel;
+    contactNote.textContent = CONFIG.contactNote;
+
+    // Modal logic
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const payBtn = document.getElementById("payBtn");
+    const closeModal = document.getElementById("closeModal");
+
+    function openModal(){
+      modalBackdrop.style.display = "flex";
+      modalBackdrop.setAttribute("aria-hidden","false");
+    }
+    function hideModal(){
+      modalBackdrop.style.display = "none";
+      modalBackdrop.setAttribute("aria-hidden","true");
+    }
+    payBtn.addEventListener("click", openModal);
+    closeModal.addEventListener("click", hideModal);
+    modalBackdrop.addEventListener("click", (e)=>{ if(e.target===modalBackdrop) hideModal(); });
+
+    // Payments
+    const paymentsList = document.getElementById("paymentsList");
+    paymentsList.innerHTML = "";
+    CONFIG.payments.forEach(p => {
+      const a = document.createElement("a");
+      a.className = "pill";
+      a.href = p.url || "#";
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = `${p.label}: ${p.detail}`;
+      paymentsList.appendChild(a);
+    });
+    document.getElementById("afterPaymentNote").textContent = CONFIG.afterPaymentNote;
+
+    // Footer "Payment Methods" link
+    if(CONFIG.showFooterPaymentsLink){
+      document.getElementById("footerPay").style.display="inline";
+      document.getElementById("footerPayLink").addEventListener("click",(e)=>{
+        e.preventDefault();
+        openModal();
+      });
+    }
+  </script>
 
 </body>
 </html>
-
 
