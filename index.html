@@ -7,34 +7,31 @@
 
   <style>
     :root{
-      --bg1:#fbe1f0;
-      --bg2:#f7c5e3;
+      --bg1:#f8e0f0;
+      --bg2:#f3e6ff;
       --card:#ffffff;
       --accent:#a24174;
       --accent-dark:#7e2e59;
       --gold:#f6c453;
       --text:#271b23;
       --muted:#6b5c66;
-      --shadow:0 14px 36px rgba(50,20,40,.18);
+      --shadow:0 12px 30px rgba(50,20,40,.14);
       --pill:#241c22;
     }
-
     *{box-sizing:border-box}
-
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       color:var(--text);
       background:
         radial-gradient(1200px 600px at -10% -20%, #ffffff 0%, transparent 60%),
-        radial-gradient(1200px 600px at 110% 0%, #ffe7f7 0%, transparent 55%),
+        radial-gradient(1200px 600px at 110% 0%, #ffe0f3 0%, transparent 55%),
         linear-gradient(180deg, var(--bg1), var(--bg2));
       min-height:100vh;
     }
 
-    /* top glam announcement bar */
     .top-banner{
-      background: linear-gradient(90deg, #7e2e59, #b24a86, #7e2e59);
+      background: linear-gradient(90deg, #8e255f, #b24a86, #8e255f);
       color:#fff;
       text-align:center;
       padding:10px 12px;
@@ -44,7 +41,7 @@
       position:sticky;
       top:0;
       z-index:10;
-      box-shadow:0 4px 16px rgba(126,46,89,.45);
+      box-shadow:0 4px 16px rgba(162,65,116,.35);
     }
 
     /* FB-matching hero banner */
@@ -65,7 +62,7 @@
     }
     .hero .fade{
       position:absolute; inset:auto 0 0 0; height:80px;
-      background:linear-gradient(180deg, transparent, rgba(251,225,240,1));
+      background:linear-gradient(180deg, transparent, rgba(248,233,242,1));
       pointer-events:none;
     }
 
@@ -80,7 +77,7 @@
       height:180px;
       background:
         radial-gradient(50% 70% at 50% 0%, rgba(246,196,83,.35) 0%, transparent 60%),
-        radial-gradient(50% 70% at 30% 10%, rgba(162,65,116,.2) 0%, transparent 60%),
+        radial-gradient(50% 70% at 30% 10%, rgba(162,65,116,.18) 0%, transparent 60%),
         radial-gradient(50% 70% at 70% 10%, rgba(86,140,255,.16) 0%, transparent 60%);
       pointer-events:none;
       filter: blur(6px);
@@ -90,7 +87,7 @@
       font-size:46px;
       font-weight:900;
       color:var(--accent);
-      text-shadow:0 2px 0 #fff, 0 10px 24px rgba(162,65,116,.28);
+      text-shadow:0 2px 0 #fff, 0 10px 24px rgba(162,65,116,.25);
     }
     header .tagline{
       color:var(--muted);
@@ -110,12 +107,12 @@
 
     .card{
       background:var(--card);
-      border-radius:22px;
+      border-radius:20px;
       box-shadow:var(--shadow);
       padding:22px;
       position:relative;
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.7);
+      border:1px solid rgba(255,255,255,.6);
     }
     .card:before{
       content:"";
@@ -153,7 +150,7 @@
       border-radius:999px;
       font-weight:800;
       text-decoration:none;
-      box-shadow:0 10px 18px rgba(162,65,116,.32);
+      box-shadow:0 10px 18px rgba(162,65,116,.30);
       transition:.15s ease;
       border:0;
       cursor:pointer;
@@ -181,6 +178,19 @@
       font-size:14px;
       margin-top:8px;
       font-weight:600;
+    }
+
+    /* Black Friday card */
+    .sale-card{
+      padding:0;
+      overflow:hidden;
+    }
+    .sale-card:before{display:none;}
+    .sale-img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:20px;
     }
 
     footer{
@@ -255,29 +265,38 @@
 <body>
 
   <!-- =========================
-       CONFIG (update here only)
+       ✅ EDIT ME SECTION (CONFIG) ✅
+       Change text/links HERE only
   ========================== -->
   <script>
     const CONFIG = {
-      announcementText: "⭐ BLACK FRIDAY: Get you Final Bougie Deals Today! ⭐",
+      announcementText: "⭐ THIS WEEK ONLY: FREE SHIPPING ON ALL ORDERS! ⭐",
       brandName: "Purse Addict Too 💕",
       tagline: "Luxury-Inspired Bags • Bougie Vibes • Easy Checkout",
 
+      // Hero banner that matches the FB page
       heroImageUrl: "purseaddicttoo-banner.png",
 
-      // Public Facebook page for lives
+      // PUBLIC Facebook page for lives:
       liveShowUrl: "https://www.facebook.com/profile.php?id=61564279056369",
 
+      // Black Friday (or any promo) graphic.
+      // 👉 Rename your image to this OR change the filename below.
+      blackFridayImageUrl: "black-friday-banner.png",
+
       payments: [
-        { label: "PayPal",  detail: "paypal.me/elizabethguerra8",      url: "https://paypal.me/elizabethguerra8" },
-        { label: "Venmo",   detail: "@Elizabeth-Guerra-99877",         url: "https://venmo.com/Elizabeth-Guerra-99877" },
-        { label: "Zelle",   detail: "(972)-793-2256",                  url: "#" },
-        { label: "Apple Pay", detail: "(972)-793-2256",                url: "#" }
+        { label: "PayPal", detail: "paypal.me/elizabethguerra8", url: "https://paypal.me/elizabethguerra8" },
+        { label: "Venmo", detail: "@Elizabeth-Guerra-99877", url: "https://venmo.com/Elizabeth-Guerra-99877" },
+        { label: "Zelle",  detail: "(972)-793-2256",            url: "#" },
+        { label: "Apple Pay", detail: "(972)-793-2256",         url: "#" }
       ],
 
       afterPaymentNote: "After payment, please screenshot and message me so I can match your order 💕",
 
-      contactEmail: "orders@purseaddicttoo.com",
+      // Contact / order section
+      contactButtonLabel: "Message Us on Facebook",
+      contactUrl: "https://www.facebook.com/profile.php?id=61564279056369",
+      contactNote: "Ready to claim a bag or have questions? Tap the button to send us a DM with your screenshot & shipping info 💌",
 
       showFooterPaymentsLink: true
     };
@@ -300,20 +319,9 @@
 
   <main class="wrap">
 
-    <!-- BLACK FRIDAY SALE CARD -->
-    <section class="card">
-      <h2>🔥 Black Friday Bougie Sale</h2>
-      <div class="small-note" style="margin-bottom:6px;">
-        Snag your favorite bags before they’re gone – first come, first served!
-      </div>
-      <ul style="list-style:none; padding:0; margin:0; text-align:center; color:var(--muted); font-weight:600; line-height:1.7;">
-        <li>⭐ Buy 3 or more bags – qualify for a **freebie** (wallet, charm, or mystery goodie)</li>
-        <li>⭐ Free shipping during the sale week</li>
-        <li>⭐ Freebies chosen & matched by Liz based on what you ordered</li>
-      </ul>
-      <div class="small-note" style="margin-top:10px;">
-        Freebies are limited & will be assigned in order of paid invoices 💕
-      </div>
+    <!-- Black Friday / Promo graphic -->
+    <section class="card sale-card" id="saleCard" style="display:none;">
+      <img id="saleImg" class="sale-img" alt="Black Friday Sale">
     </section>
 
     <!-- SHOP LIVE -->
@@ -326,37 +334,18 @@
       <div class="small-note">Payments are quick & easy — tap “How to Pay” anytime 💕</div>
     </section>
 
-    <!-- CONTACT / ORDER ME -->
+    <!-- CONTACT / PLACE AN ORDER -->
     <section class="card">
-      <h2>📩 Contact / Order Me</h2>
-      <p style="text-align:center; color: var(--muted); font-weight:600;">
-        Not shopping during a live? Use this form to request a bag.  
-        Please include the purse number + a short description 💕
-      </p>
-
-      <form action="mailto:orders@purseaddicttoo.com" method="POST" enctype="text/plain"
-            style="margin-top:15px; display:flex; flex-direction:column; gap:12px;">
-        <input type="text" name="name" placeholder="Your Name" required
-          style="padding:14px; border-radius:12px; border:1px solid #ddd; font-size:16px;">
-        <input type="email" name="email" placeholder="Your Email" required
-          style="padding:14px; border-radius:12px; border:1px solid #ddd; font-size:16px;">
-        <textarea name="message" placeholder="Enter purse number + description…" rows="5" required
-          style="padding:14px; border-radius:12px; border:1px solid #ddd; font-size:16px;"></textarea>
-
-        <button class="btn gold" type="submit" 
-          style="align-self:center; min-width:220px;">
-          ✨ Send Order Request
-        </button>
-      </form>
-
-      <div class="small-note" style="margin-top:10px;">
-        Orders are **first come, first served** based on time of paid invoice 💖
+      <h2>📩 Contact / Place an Order</h2>
+      <div class="center">
+        <a class="btn" id="contactBtn" target="_blank" rel="noopener">Message Us</a>
       </div>
+      <div class="small-note" id="contactNote"></div>
     </section>
 
   </main>
 
-  <!-- PAYMENTS MODAL -->
+  <!-- PAYMENT MODAL -->
   <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="paymentsTitle">
       <button class="close-x" id="closeModal" aria-label="Close">×</button>
@@ -368,41 +357,48 @@
 
   <footer>
     <span>© <span id="footerBrand"></span></span>
-    <br>
-    <span style="font-size:13px; color: var(--muted);">
-      Email: 
-      <a href="mailto:orders@purseaddicttoo.com" class="subtle-link">orders@purseaddicttoo.com</a> • 
-      <a href="mailto:support@purseaddicttoo.com" class="subtle-link">support@purseaddicttoo.com</a> • 
-      <a href="mailto:contact@purseaddicttoo.com" class="subtle-link">contact@purseaddicttoo.com</a>
-    </span>
     <span id="footerPay" style="display:none;">
-      <br>
-      <a href="#" class="subtle-link" id="footerPayLink">View Payment Methods</a>
+      • <a href="#" class="subtle-link" id="footerPayLink">Payment Methods</a>
     </span>
   </footer>
 
   <script>
-    // Inject config into page
-    document.getElementById("topBanner").textContent  = CONFIG.announcementText;
-    document.getElementById("brandName").textContent  = CONFIG.brandName;
+    // Top text / brand
+    document.getElementById("topBanner").textContent = CONFIG.announcementText;
+    document.getElementById("brandName").textContent = CONFIG.brandName;
     document.getElementById("footerBrand").textContent = CONFIG.brandName.replace("💕","").trim();
-    document.getElementById("tagline").textContent    = CONFIG.tagline;
+    document.getElementById("tagline").textContent = CONFIG.tagline;
 
-    // Hero image
-    if (CONFIG.heroImageUrl){
+    // Hero
+    if(CONFIG.heroImageUrl){
       const heroWrap = document.getElementById("heroWrap");
       const heroImg  = document.getElementById("heroImg");
       heroImg.src = CONFIG.heroImageUrl;
       heroWrap.style.display = "block";
     }
 
-    // Live show button
+    // Black Friday / promo graphic
+    if(CONFIG.blackFridayImageUrl){
+      const saleCard = document.getElementById("saleCard");
+      const saleImg  = document.getElementById("saleImg");
+      saleImg.src = CONFIG.blackFridayImageUrl;
+      saleCard.style.display = "block";
+    }
+
+    // Shop Live button
     document.getElementById("liveBtn").href = CONFIG.liveShowUrl;
+
+    // Contact / order card
+    const contactBtn  = document.getElementById("contactBtn");
+    const contactNote = document.getElementById("contactNote");
+    contactBtn.href        = CONFIG.contactUrl;
+    contactBtn.textContent = CONFIG.contactButtonLabel;
+    contactNote.textContent = CONFIG.contactNote;
 
     // Modal logic
     const modalBackdrop = document.getElementById("modalBackdrop");
-    const payBtn        = document.getElementById("payBtn");
-    const closeModal    = document.getElementById("closeModal");
+    const payBtn = document.getElementById("payBtn");
+    const closeModal = document.getElementById("closeModal");
 
     function openModal(){
       modalBackdrop.style.display = "flex";
@@ -416,22 +412,22 @@
     closeModal.addEventListener("click", hideModal);
     modalBackdrop.addEventListener("click", (e)=>{ if(e.target===modalBackdrop) hideModal(); });
 
-    // Populate payment pills
+    // Payments
     const paymentsList = document.getElementById("paymentsList");
     paymentsList.innerHTML = "";
     CONFIG.payments.forEach(p => {
       const a = document.createElement("a");
       a.className = "pill";
-      a.href  = p.url || "#";
+      a.href = p.url || "#";
       a.target = "_blank";
-      a.rel   = "noopener";
+      a.rel = "noopener";
       a.textContent = `${p.label}: ${p.detail}`;
       paymentsList.appendChild(a);
     });
     document.getElementById("afterPaymentNote").textContent = CONFIG.afterPaymentNote;
 
-    // Footer payment link
-    if (CONFIG.showFooterPaymentsLink){
+    // Footer "Payment Methods" link
+    if(CONFIG.showFooterPaymentsLink){
       document.getElementById("footerPay").style.display="inline";
       document.getElementById("footerPayLink").addEventListener("click",(e)=>{
         e.preventDefault();
