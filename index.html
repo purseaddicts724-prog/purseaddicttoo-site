@@ -270,7 +270,7 @@
   ========================== -->
   <script>
     const CONFIG = {
-      announcementText: "⭐ THIS WEEK ONLY: FREE SHIPPING ON ALL ORDERS! ⭐",
+      announcementText: "⭐ Black Friday Sale! ⭐",
       brandName: "Purse Addict Too 💕",
       tagline: "Luxury-Inspired Bags • Bougie Vibes • Easy Checkout",
 
@@ -425,13 +425,39 @@
       paymentsList.appendChild(a);
     });
     document.getElementById("afterPaymentNote").textContent = CONFIG.afterPaymentNote;
+<section class="card">
+  <h2>📩 Contact / Order Me</h2>
+  <p style="text-align:center; color: var(--muted); font-weight:600;">
+    Have a bag in mind? Submit your order request below!  
+    Please include the purse number + short description 💕
+  </p>
 
-    // Footer "Payment Methods" link
-    if(CONFIG.showFooterPaymentsLink){
-      document.getElementById("footerPay").style.display="inline";
-      document.getElementById("footerPayLink").addEventListener("click",(e)=>{
-        e.preventDefault();
-        openModal();
+  <form action="mailto:orders@purseaddicttoo.com" method="POST" enctype="text/plain" style="margin-top:15px; display:flex; flex-direction:column; gap:12px;">
+    <input type="text" name="name" placeholder="Your Name" required
+      style="padding:14px; border-radius:12px; border:1px solid #ddd; font-size:16px;">
+    <input type="email" name="email" placeholder="Your Email" required
+      style="padding:14px; border-radius:12px; border:1px solid #ddd; font-size:16px;">
+    <textarea name="message" placeholder="Enter purse number + description…" rows="5" required
+      style="padding:14px; border-radius:12px; border:1px solid #ddd; font-size:16px;"></textarea>
+
+    <button class="btn gold" type="submit" 
+      style="align-self:center; min-width:220px;">
+      ✨ Send Order Request
+    </button>
+  </form>
+</section>
+
+    <footer>
+  <span>© Purse Addict Too</span>
+  <br>
+  <span style="font-size:13px; color: var(--muted);">
+    Email: 
+    <a href="mailto:orders@purseaddicttoo.com" class="subtle-link">orders@purseaddicttoo.com</a> • 
+    <a href="mailto:support@purseaddicttoo.com" class="subtle-link">support@purseaddicttoo.com</a> • 
+    <a href="mailto:contact@purseaddicttoo.com" class="subtle-link">contact@purseaddicttoo.com</a>
+  </span>
+</footer>
+
       });
     }
   </script>
